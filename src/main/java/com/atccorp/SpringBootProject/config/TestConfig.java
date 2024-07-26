@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.atccorp.SpringBootProject.entities.Category;
 import com.atccorp.SpringBootProject.entities.Order;
 import com.atccorp.SpringBootProject.entities.User;
 import com.atccorp.SpringBootProject.entities.emuns.OrderStatus;
+import com.atccorp.SpringBootProject.repositories.CategoryRepository;
 import com.atccorp.SpringBootProject.repositories.OrderRepository;
 import com.atccorp.SpringBootProject.repositories.UserRepository;
 
@@ -23,9 +25,20 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private OrderRepository orderRepository;
+	
+	@Autowired
+	private CategoryRepository categoryRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		Category c1 = new Category(null, "Eletronics");
+		Category c2 = new Category(null, "Computers");
+		Category c3 = new Category(null, "Books");
+		Category c4 = new Category(null, "Tools");
+		Category c5 = new Category(null, "Fashion");
+		
+		categoryRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5));	
 		
 		User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
 		User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456");
@@ -38,6 +51,7 @@ public class TestConfig implements CommandLineRunner {
 		Order o3 = new Order(null, Instant.parse("2024-07-22T11:21:27Z"), OrderStatus.DELIVERED, u1);
 		Order o4 = new Order(null, Instant.parse("2024-07-17T07:14:18Z"), OrderStatus.SHIPPED, u4);
 		Order o5 = new Order(null, Instant.parse("2024-07-16T15:36:07Z"), OrderStatus.WAITING_PAYMENT, u5);
+		
 		
 		userRepository.saveAll(Arrays.asList(u1, u2, u3, u4, u5));	
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3, o4, o5));	

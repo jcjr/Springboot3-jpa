@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.atccorp.SpringBootProject.entities.Order;
 import com.atccorp.SpringBootProject.entities.User;
+import com.atccorp.SpringBootProject.entities.emuns.OrderStatus;
 import com.atccorp.SpringBootProject.repositories.OrderRepository;
 import com.atccorp.SpringBootProject.repositories.UserRepository;
 
@@ -32,11 +33,11 @@ public class TestConfig implements CommandLineRunner {
 		User u4 = new User(null, "Ícaro da Silva", "icaros@gmail.com", "842536987", "123456");
 		User u5 = new User(null, "Saimon da Silva", "saimons@gmail.com", "869532659", "123456");
 		
-		Order o1 = new Order(null, Instant.parse("2024-07-20T19:53:07Z"), u1);
-		Order o2 = new Order(null, Instant.parse("2024-07-18T03:42:10Z"), u2);
-		Order o3 = new Order(null, Instant.parse("2024-07-22T11:21:27Z"), u1);
-		Order o4 = new Order(null, Instant.parse("2024-07-17T07:14:18Z"), u4);
-		Order o5 = new Order(null, Instant.parse("2024-07-16T15:36:07Z"), u5);
+		Order o1 = new Order(null, Instant.parse("2024-07-20T19:53:07Z"), OrderStatus.PAID, u1);
+		Order o2 = new Order(null, Instant.parse("2024-07-18T03:42:10Z"), OrderStatus.CANCELED, u2);
+		Order o3 = new Order(null, Instant.parse("2024-07-22T11:21:27Z"), OrderStatus.DELIVERED, u1);
+		Order o4 = new Order(null, Instant.parse("2024-07-17T07:14:18Z"), OrderStatus.SHIPPED, u4);
+		Order o5 = new Order(null, Instant.parse("2024-07-16T15:36:07Z"), OrderStatus.WAITING_PAYMENT, u5);
 		
 		userRepository.saveAll(Arrays.asList(u1, u2, u3, u4, u5));	
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3, o4, o5));	

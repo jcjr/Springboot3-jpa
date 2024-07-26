@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.atccorp.SpringBootProject.entities.Category;
 import com.atccorp.SpringBootProject.entities.Order;
+import com.atccorp.SpringBootProject.entities.OrderItem;
 import com.atccorp.SpringBootProject.entities.Product;
 import com.atccorp.SpringBootProject.entities.User;
 import com.atccorp.SpringBootProject.entities.emuns.OrderStatus;
 import com.atccorp.SpringBootProject.repositories.CategoryRepository;
+import com.atccorp.SpringBootProject.repositories.OrderItemRepository;
 import com.atccorp.SpringBootProject.repositories.OrderRepository;
 import com.atccorp.SpringBootProject.repositories.ProductRepository;
 import com.atccorp.SpringBootProject.repositories.UserRepository;
@@ -33,6 +35,9 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private OrderItemRepository orderitemRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -76,6 +81,13 @@ public class TestConfig implements CommandLineRunner {
 		userRepository.saveAll(Arrays.asList(u1, u2, u3, u4, u5));	
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3, o4, o5));	
 		
+		OrderItem oi1 = new OrderItem(o1, p1, 1, p1.getPrice());
+		OrderItem oi2 = new OrderItem(o1, p3, 2, p3.getPrice());
+		OrderItem oi3 = new OrderItem(o3, p3, 3, p3.getPrice());
+		OrderItem oi4 = new OrderItem(o4, p4, 4, p4.getPrice());
+		OrderItem oi5 = new OrderItem(o5, p5, 5, p5.getPrice());
+		
+		orderitemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4, oi5));
 	}
 
 }

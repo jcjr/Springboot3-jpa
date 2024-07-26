@@ -23,14 +23,14 @@ public class OrderResource {
 	
 	@GetMapping
 	public ResponseEntity<List<Order>> findAll() {
-		//List<Order> list = service.findAll();
-		return ResponseEntity.ok().body(service.findAll());//list);
+		//List<Order> list = service.findAll();  Exemplo com variável
+		return ResponseEntity.ok().body(service.findAll());//list);  Exemplo sem variável
 	}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Order> findById(@PathVariable Long id) {
-		//Order obj = service.findById(id);
-		return ResponseEntity.ok().body(service.findById(id));//obj);
+		//Order obj = service.findById(id); Exemplo com variável
+		return ResponseEntity.ok().body(service.findById(id));//obj);  Exemplo sem variável
 	}
 	
 

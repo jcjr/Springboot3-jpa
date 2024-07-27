@@ -1,37 +1,55 @@
 package com.atccorp.SpringBootProject.resources;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.atccorp.SpringBootProject.entities.User;
 import com.atccorp.SpringBootProject.services.UserService;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
-	
+
 	@Autowired
 	private UserService service;
-	
+
 	@GetMapping
 	public ResponseEntity<List<User>> findAll() {
-		//List<User> list = service.findAll(); Exemplo com variável
-		return ResponseEntity.ok().body(service.findAll());//list); Exemplo sem variável
+		// List<User> list = service.findAll(); Exemplo com variável
+		return ResponseEntity.ok().body(service.findAll());// list); Exemplo sem variável
 	}
-	
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id) {
-		//User obj = service.findById(id); Exemplo com variável
-		return ResponseEntity.ok().body(service.findById(id));//obj);  Exemplo com variável
+		// User obj = service.findById(id); Exemplo com variável
+		return ResponseEntity.ok().body(service.findById(id));// obj); Exemplo com variável
 	}
-	
+
+	@PostMapping
+	public ResponseEntity<User> insert(@RequestBody User obj) {
+		// Exemplo com as variáveis "obj" e "uri"
+		//*
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).body(obj);
+		//*/
+		
+		// Exemplo sem variável "obj" e "uri"
+		/*
+		return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(service.insert(obj).getId()).toUri()).body(service.insert(obj));
+		*/
+	}
 
 }

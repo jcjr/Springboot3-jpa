@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.atccorp.SpringBootProject.entities.emuns.OrderStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -29,7 +30,7 @@ public class Order implements Serializable {
 	private Long id;
 
 	//Problemas de serialização da notação do JsonFormat na versão 2.0
-	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT");
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
 	private Integer orderStatus;
 

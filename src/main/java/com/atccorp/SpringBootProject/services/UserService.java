@@ -1,12 +1,14 @@
 package com.atccorp.SpringBootProject.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.atccorp.SpringBootProject.entities.User;
 import com.atccorp.SpringBootProject.repositories.UserRepository;
+import com.atccorp.SpringBootProject.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -19,8 +21,14 @@ public class UserService {
 	}
 	
 	public User findById(Long id) {
-		//Optional<User> obj = repository.findById(id);
-		return repository.findById(id).get();//obj.get();
+		// Exemplo com variável
+		/*
+		Optional<User> obj = repository.findById(id);
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id)); //*/
+		
+		// Exemplo sem variável
+		//*
+		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id)); //*/
 	}
 	
 	public User insert(User obj) {

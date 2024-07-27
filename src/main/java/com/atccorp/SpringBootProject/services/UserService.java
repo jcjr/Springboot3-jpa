@@ -1,7 +1,6 @@
 package com.atccorp.SpringBootProject.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,4 +30,27 @@ public class UserService {
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
+	
+	public User update(Long id, User obj) {
+		
+		// Exemplo com a variável "entity"
+		/*
+		User entity = repository.getReferenceById(id);
+		update(entity, obj);
+		return repository.save(entity);//*/
+		
+		// Exemplo sem variável "entity"
+		//*
+		update(repository.getReferenceById(id), obj);
+		return repository.save(repository.getReferenceById(id));//*/
+	}
+
+	private void update(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
+		entity.setName(obj.getName());
+	}
+	
+	
 }

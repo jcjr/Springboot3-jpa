@@ -3,10 +3,16 @@ package com.atccorp.SpringBootProject.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.atccorp.SpringBootProject.entities.Product;
 import com.atccorp.SpringBootProject.repositories.ProductRepository;
+import com.atccorp.SpringBootProject.services.exceptions.DatabaseException;
+import com.atccorp.SpringBootProject.services.exceptions.ResourceNotFoundException;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ProductService {
@@ -19,7 +25,39 @@ public class ProductService {
 	}
 	
 	public Product findById(Long id) {
-		//Optional<product> obj = repository.findById(id);
-		return repository.findById(id).get();//obj.get();
+		return repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
+	
+	public Product insert(Product obj) {
+		return repository.save(obj);
+	}
+	
+	public void delete(Long id) {
+		try {
+			repository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());
+		}
+	}
+	
+	public Product update(Long id, Product obj) {
+		
+		try {
+			update(repository.getReferenceById(id), obj);
+			return repository.save(repository.getReferenceById(id));
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
+	}
+	
+	private void update(Product entity, Product obj) {
+		entity.setName(obj.getName());
+		entity.setDescription(obj.getDescription());
+		entity.setPrice(obj.getPrice());
+		entity.setImgUrl(obj.getImgUrl());
+	}
+	
 }

@@ -1,5 +1,6 @@
 package com.atccorp.SpringBootProject.services;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import com.atccorp.SpringBootProject.entities.User;
 import com.atccorp.SpringBootProject.repositories.UserRepository;
 import com.atccorp.SpringBootProject.services.exceptions.DatabaseException;
 import com.atccorp.SpringBootProject.services.exceptions.ResourceNotFoundException;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class UserService {
@@ -57,8 +60,13 @@ public class UserService {
 		
 		// Exemplo sem variável "entity"
 		//*
-		update(repository.getReferenceById(id), obj);
-		return repository.save(repository.getReferenceById(id));//*/
+		try {
+			update(repository.getReferenceById(id), obj);
+			return repository.save(repository.getReferenceById(id));
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
+		//*/
 	}
 
 	private void update(User entity, User obj) {

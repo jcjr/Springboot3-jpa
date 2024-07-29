@@ -1,7 +1,6 @@
 package com.atccorp.SpringBootProject.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -9,7 +8,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.atccorp.SpringBootProject.entities.Order;
-import com.atccorp.SpringBootProject.entities.User;
 import com.atccorp.SpringBootProject.repositories.OrderRepository;
 import com.atccorp.SpringBootProject.services.exceptions.DatabaseException;
 import com.atccorp.SpringBootProject.services.exceptions.ResourceNotFoundException;

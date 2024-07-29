@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.atccorp.SpringBootProject.entities.Category;
-import com.atccorp.SpringBootProject.entities.User;
 import com.atccorp.SpringBootProject.services.CategoryService;
 
 

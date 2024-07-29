@@ -1,4 +1,4 @@
-package com.atccorp.SpringBootProject.resources.execptions;
+package com.atccorp.SpringBootProject.resources.exceptions;
 
 import java.io.Serializable;
 import java.time.Instant;

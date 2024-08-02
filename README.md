@@ -58,7 +58,7 @@ otimizado para melhor performace da aplicação.
     ```properties
     spring.datasource.url=jdbc:mysql://localhost:3306/nome_do_banco_de_dados
     spring.datasource.username=seu_usuario (Usuário do projeto: root)
-    spring.datasource.password=sua_senha (Senha do projeto:)
+    spring.datasource.password=sua_senha (Senha do projeto: sem senha)
 
     spring.jpa.hibernate.ddl-auto=update
     spring.jpa.show-sql=true

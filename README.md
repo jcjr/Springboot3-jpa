@@ -50,8 +50,6 @@ estão aprendendo as tecnologias Java, Springbot3 e banco de dados MySQL. Parte 
     ```
 3. Atualize o arquivo `application-test.properties` em `src/main/resources` com suas configurações de banco de dados:
 
-    ```http
-
     # DTASOURCE
     spring.datasource.driverClassName=org.h2.Driver
     spring.datasource.url=jdbc:h2mem:testdb (Nome do DB: testedb - Modifique se desejar)
@@ -66,8 +64,6 @@ estão aprendendo as tecnologias Java, Springbot3 e banco de dados MySQL. Parte 
     spring.jpa.defer-datasource-initialization=true
     spring.jpa.show-sql=true
     spring.jpa.properties.hibernate.format_sql=true
-
-    ```
 
 ## Uso
 
@@ -108,10 +104,8 @@ http://localhost/users/1
 
 ### Acessando banco de dados
 Para acessar o banco de dados em memória você deve colocar o seguinte endereço no navegador:
-```http
-http://localhost/h2-console
 
-```
+http://localhost/h2-console
 
 ## Contribuição
 

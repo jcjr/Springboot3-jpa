@@ -50,22 +50,22 @@ estão aprendendo as tecnologias Java, Springbot3 e banco de dados MySQL. Parte 
     ```
 3. Atualize o arquivo `application-test.properties` em `src/main/resources` com suas configurações de banco de dados:
 
-    # DTASOURCE
+    #DATASOURCE
     spring.datasource.driverClassName=org.h2.Driver
     spring.datasource.url=jdbc:h2mem:testdb (Nome do DB: testedb - Modifique se desejar)
     spring.datasource.usrname=root (Usuário: root)
     spring.datasoure.password= (Senha: Sem senha. Insira uma a seu critério (Sem espaço))
 
-    # H2 CLIENT
+    #H2 CLIENT
     spring.h2.console.enabled=true
     spring.h2.console.path=/h2-console
 
-    # JPA, SQL
+    #JPA, SQL
     spring.jpa.defer-datasource-initialization=true
     spring.jpa.show-sql=true
     spring.jpa.properties.hibernate.format_sql=true
 
-## Uso
+## Uso do aplicativo
 
 O aplicativo trabalha inicialmente com um banco de dados em memória fazendo todas as operações de CRUD normalmente. Utilizando o Postman com as requisições (GET, POST e PUT) é possível inserir, lê, editar e excluir os dados em memória. O projeto tem o intuito de integração de software desktop e web.
 

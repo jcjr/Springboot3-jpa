@@ -68,7 +68,7 @@ estão aprendendo as tecnologias Java, Springbot3 e banco de dados MySQL. Parte 
     spring.jpa.properties.hibernate.format_sql=true
 
     ```
-    
+
 ## Uso
 
 O aplicativo trabalha inicialmente com um banco de dados em memória fazendo todas as operações de CRUD normalmente. Utilizando o Postman com as requisições (GET, POST e PUT) é possível inserir, lê, editar e excluir os dados em memória. O projeto tem o intuito de integração de software desktop e web.
@@ -98,6 +98,7 @@ http://localhost/users/
 http://localhost/users/1
 
 ```
+
 ### Resultados no navegador
 
 ```json
@@ -110,7 +111,7 @@ Para acessar o banco de dados em memória você deve colocar o seguinte endereç
 ```http
 http://localhost/h2-console
 
-````
+```
 
 ## Contribuição
 
